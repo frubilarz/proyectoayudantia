@@ -1,0 +1,15 @@
+<%= form_for(@auto, :html => {:role => 'form'}) do |f| %>
+    <% if @auto.errors.any? %>
+        <%= pluralize(@auto.errors.count, "error") %>
+
+        <% @auto.errors.full_messages.each do |actual| %>
+            <%= actual %>
+        <% end %>
+    <% end %>
+    <%= f.label :puertas %>
+    <%= f.text_field :puertas %>
+
+    <%= f.label :color %>
+    <%= f.text_field :color %>
+    <%= f.submit %>
+<% end %>

@@ -1,0 +1,23 @@
+<h1> <%= link_to 'CREAR NUEVO AUTO', nuevo_auto_path %> </h1>
+<table>
+  <thead>
+  <tr>
+    <th>Color</th>
+    <th>puertas</th>
+    <th>Mostrar</th>
+    <th>editar</th>
+    <th>eliminar</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @autos.each do |actual| %>
+      <tr>
+        <td><%= actual.color %></td>
+        <td><%= actual.puertas %></td>
+        <td><%= link_to 'Mostrar', auto_url(actual) %></td>
+        <td> <%= link_to 'Editar', editar_auto_path(actual) %></td>
+        <td><%= link_to 'Eliminar', actual, method: :delete, data: {confirm: 'segurito?'} %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
