@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :usuarios
+  root "autos#index"
+
   get 'autos/', to: 'autos#index'
   get 'autos/nuevo', to: 'autos#nuevo', as: 'nuevo_auto'
   get 'autos/:id',to:'autos#mostrar', as: 'auto'

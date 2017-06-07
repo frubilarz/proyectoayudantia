@@ -1,5 +1,6 @@
 class AutosController < ApplicationController
-  before_action :set_auto, only: [:mostrar,:editar,:update,:eliminar]
+  before_action :set_auto, only: [:mostrar, :editar, :update, :eliminar]
+  before_action :authenticate_usuario!
 
   def index
     @autos = Auto.all
@@ -20,9 +21,9 @@ class AutosController < ApplicationController
     @auto = Auto.create(auto_params)
     respond_to do |format|
       if @auto.save
-        format.html{redirect_to @auto, notice: 'Fue creado con mucho exito'}
+        format.html {redirect_to @auto, notice: 'Fue creado con mucho exito'}
       else
-        format.html{render :nuevo}
+        format.html {render :nuevo}
       end
     end
   end
@@ -31,9 +32,9 @@ class AutosController < ApplicationController
   def update
     respond_to do |format|
       if @auto.update(auto_params)
-        format.html{redirect_to @auto}
+        format.html {redirect_to @auto}
       else
-        format.html{render :nuevo}
+        format.html {render :nuevo}
       end
     end
   end
@@ -41,7 +42,7 @@ class AutosController < ApplicationController
   def eliminar
     @auto.destroy
     respond_to do |format|
-      format.html{redirect_to autos_url,notice: 'fue eliminado'}
+      format.html {redirect_to autos_url, notice: 'fue eliminado'}
     end
   end
 
@@ -53,7 +54,7 @@ class AutosController < ApplicationController
 
 
   def auto_params
-    params.require(:auto).permit(:color,:puertas)
+    params.require(:auto).permit(:color, :puertas)
   end
 
 end
